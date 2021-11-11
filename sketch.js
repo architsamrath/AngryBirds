@@ -39,8 +39,7 @@ log3 = new Log(760,120,150,PI/7)
 log4 = new Log(870,120,150,-PI/7)
   
 bird = new Bird(100,100)
-constrainedLog= new Log (230,180,80,PI/2)
-rope = new Rope(bird.body,constrainedLog.body)
+rope = new Slingshot(bird.body,{x:200 , y:100})
 
 }
 
@@ -62,7 +61,6 @@ function draw() {
   log4.display()
   log3.display()
   bird.display()
-  constrainedLog.display()
   rope.display()
   
 
@@ -71,5 +69,11 @@ function draw() {
 
   //  ellipseMode(RADIUS)
   //  ellipse(ball.position.x,ball.position.y,20,20)
+}
+function mouseDragged(){
+  Matter.Body.setPosition(bird.body,{x:mouseX,y:mouseY})
+}
+function mouseReleased(){
+ rope.fly()
 }
 
